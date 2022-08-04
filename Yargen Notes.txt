@@ -25,6 +25,19 @@ verify yara rule:
 yara /home/remnux/yargen/backdoor.yar /home/remnux/execise/evil/
 
 
+YarGen Commands:
+python3 yarGen.py -m /home/remnux/exercise/ -o test.yar
+python3 yarGen.py --excludegood -m /home/remnux/exercise/ -o test.yar
+python3 yarGen.py --nosimple -m /home/remnux/exercise/ -o test.yar
+python3 yarGen.py -a "Azaz" -r "http://wipro.com" -m /home/remnux/exercise/ -o test.yar
+python3 yarGen.py --score -m /home/remnux/exercise/ -o test.yar
+python3 yarGen.py --score -z 5 -m /home/remnux/exercise/ -o test.yar
+python3 yarGen.py --debug -m /home/remnux/exercise/ -o test.yar
+python3 yarGen.py --inverse -m /home/remnux/exercise/ -o test.yar
+python3 yarGen.py -oe -m /home/remnux/exercise/ -o test.yar
+Note: EXE,DLL,ASP,JSP,PHP,BIN, and infected
+python3 yarGen.py -c -i azaz -m /home/remnux/exercise/
+python3 yarGen.py -u -i azaz -m /home/remnux/exercise/
 
 
 EXTRAAAAAAAAA for attacking:::::::
