@@ -1,0 +1,21 @@
+apt install clamav
+apt install clamav-daemon
+freshclam
+strings axonious.exe 
+
+yara axonious.yar exercise/
+
+clamscan --database=axonious.yar exercise/axonious.exe 
+
+python3 yarGen.py -m /home/remnux/yarGen/axonious/ -o yargen_axonious.yar
+
+
+upx mimikatz.exe
+hxd:
+upx0 -> bpx0
+
+virustotal.com
+
+unpacked
+packed
+modified packed
